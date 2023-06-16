@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "365532683473",
+    "project_id": "mymovielist-446b1",
+    "storage_bucket": "mymovielist-446b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365532683473:android:63f8f4ceeed0f92194b9f0",
+        "android_client_info": {
+          "package_name": "com.anima.mymovielist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365532683473-5go1cu5a87o68lm0fkvuvbd81astm9dn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7KHJG6zIxyA9dEj99QacMO-38Nee5OvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365532683473-5go1cu5a87o68lm0fkvuvbd81astm9dn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
