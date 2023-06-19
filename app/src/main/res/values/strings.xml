@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyMovieList</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="page_number">%1$d / %2$d</string>
 </resources>

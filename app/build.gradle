@@ -52,4 +52,5 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.1.1'
 
     implementation 'com.github.bumptech.glide:glide:4.14.2'
+    implementation 'com.google.android.gms:play-services-tasks:17.2.1'
 }
