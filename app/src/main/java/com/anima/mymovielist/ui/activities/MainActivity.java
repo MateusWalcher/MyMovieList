@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     movieList = new ArrayList<>();
     favoritesList = new ArrayList<>();
+
     recyclerView = findViewById(R.id.recyclerView);
     recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
@@ -61,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
       if (currentPage > 1) {
         currentPage--;
         updatePageNumber(tvPageNumber, currentPage, totalPages);
-        updateJsonUrl(currentPage);
         movieList.clear();
+        modelTMDB.updateJsonUrl(currentPage);
         modelTMDB.getData();
       }
     });
@@ -71,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
       if (currentPage < totalPages) {
         currentPage++;
         updatePageNumber(tvPageNumber, currentPage, totalPages);
-        updateJsonUrl(currentPage);
         movieList.clear();
+        modelTMDB.updateJsonUrl(currentPage);
         modelTMDB.getData();
       }
     });
@@ -83,11 +84,6 @@ public class MainActivity extends AppCompatActivity {
   private void updatePageNumber(TextView tvPageNumber, int currentPage, int totalPages) {
     String pageNumberText = getString(R.string.page_number, currentPage, totalPages);
     tvPageNumber.setText(pageNumberText);
-  }
-
-  private void updateJsonUrl(int page) {
-    String jsonUrl = ModelTMDB.JSON_URL.replace("page=1", "page=" + page);
-    modelTMDB.setJsonUrl(jsonUrl);
   }
 
   @Override

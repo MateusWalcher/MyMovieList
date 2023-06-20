@@ -48,4 +48,5 @@ public class MenuHandler {
     intent.putParcelableArrayListExtra("favoritesList", new ArrayList<>(favoritesList));
     context.startActivity(intent);
   }
+
 }

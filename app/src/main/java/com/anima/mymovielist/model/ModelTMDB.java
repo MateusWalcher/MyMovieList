@@ -16,7 +16,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ModelTMDB {
-  public static final String JSON_URL = "https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1";
+  private static final String JSON_URL = "https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1";
 
   private String jsonUrl;
   private List<MovieModelClass> movieList;
@@ -81,4 +81,15 @@ public class ModelTMDB {
       }
     }
   }
+
+  public void updateJsonUrl(int page) {
+    String jsonUrl = JSON_URL.replace("page=1", "page=" + page);
+    setJsonUrl(jsonUrl);
+  }
+
+  public void updateJsonUrlType() {
+    String jsonUrl = JSON_URL.replace("https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1", "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1");
+    setJsonUrl(jsonUrl);
+  }
+
 }
