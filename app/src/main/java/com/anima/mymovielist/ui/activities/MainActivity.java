@@ -19,6 +19,7 @@ import com.anima.mymovielist.ui.adapters.FilmesAdaptery;
 import com.anima.mymovielist.model.MovieModelClass;
 import com.anima.mymovielist.R;
 import com.anima.mymovielist.model.ModelTMDB;
+import com.anima.mymovielist.utils.ChangeLanguage;
 import com.anima.mymovielist.utils.MenuHandler;
 
 import java.util.ArrayList;
@@ -51,19 +52,21 @@ public class MainActivity extends AppCompatActivity {
     filmesAdaptery = new FilmesAdaptery(this, movieList, favoritesList);
     recyclerView.setAdapter(filmesAdaptery);
 
-    modelTMDB = new ModelTMDB(movieList, filmesAdaptery);
+    modelTMDB = new ModelTMDB(MainActivity.this,movieList, filmesAdaptery);
 
     View paginationLayout = findViewById(R.id.layout_pagination);
     ImageButton btnPrevious = paginationLayout.findViewById(R.id.btnPrevious);
     ImageButton btnNext = paginationLayout.findViewById(R.id.btnNext);
     TextView tvPageNumber = paginationLayout.findViewById(R.id.tvPageNumber);
     ImageButton btnCategory = paginationLayout.findViewById(R.id.btncategory);
+    ImageButton btnLanguage = paginationLayout.findViewById(R.id.btnLanguage);
 
     View optionsLayout = findViewById(R.id.layout_options);
     Button btnCartaz = optionsLayout.findViewById(R.id.btnCartaz);
     Button btnPopular = optionsLayout.findViewById(R.id.btnPopular);
     Button btnVotado = optionsLayout.findViewById(R.id.btnVotado);
 
+    ChangeLanguage.changeFlag(MainActivity.this, btnLanguage);
 
     btnCategory.setOnClickListener(v -> {
         if (optionsLayout.getVisibility() == View.VISIBLE){
@@ -98,6 +101,11 @@ public class MainActivity extends AppCompatActivity {
       updatePageNumber(tvPageNumber, currentPage, totalPages);
       modelTMDB.setJsonUrlTopRated();
       modelTMDB.getData();
+    });
+
+    btnLanguage.setOnClickListener(v ->{
+      ChangeLanguage.changeLanguage(MainActivity.this);
+      recreate();
     });
 
 

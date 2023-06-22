@@ -1,7 +1,9 @@
 package com.anima.mymovielist.model;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
+import com.anima.mymovielist.R;
 import com.anima.mymovielist.ui.adapters.FilmesAdaptery;
 
 import org.json.JSONArray;
@@ -16,13 +18,18 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ModelTMDB {
-  private static final String JSON_URL = "https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1";
+  private String JSON_URL = "";
 
   private String jsonUrl;
   private List<MovieModelClass> movieList;
   private FilmesAdaptery filmesAdaptery;
+  private Context context;
 
-  public ModelTMDB(List<MovieModelClass> movieList, FilmesAdaptery filmesAdaptery) {
+  public ModelTMDB(Context context, List<MovieModelClass> movieList, FilmesAdaptery filmesAdaptery) {
+
+    this.JSON_URL = context.getString(R.string.now_playing_completo);
+
+    this.context  = context;
     this.movieList = movieList;
     this.filmesAdaptery = filmesAdaptery;
     this.jsonUrl = JSON_URL;
@@ -93,26 +100,26 @@ public class ModelTMDB {
     String jsonUrl = this.jsonUrl;
 
     if (jsonUrl.contains("now_playing")) {
-      jsonUrl = "https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=" + page;
+      jsonUrl = context.getString(R.string.now_playing_sem_pagina) + page;
     } else if (jsonUrl.contains("popular")) {
-      jsonUrl = "https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=" + page;
+      jsonUrl = context.getString(R.string.popular_sem_pagina) + page;
     } else if (jsonUrl.contains("top_rated")) {
-      jsonUrl = "https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=" + page;
+      jsonUrl = context.getString(R.string.top_rated_sem_pagina) + page;
     }
     setJsonUrl(jsonUrl);
   }
 
   public void setJsonUrlNowPlaying(){
-    String jsonUrl = "https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1";
+    String jsonUrl = context.getString(R.string.now_playing_completo);
     setJsonUrl(jsonUrl);
   }
 
   public void setJsonUrlPopular(){
-    String jsonUrl = "https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1";
+    String jsonUrl = context.getString(R.string.popular_completo);
     setJsonUrl(jsonUrl);
   }
   public void setJsonUrlTopRated(){
-    String jsonUrl = "https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1";
+    String jsonUrl = context.getString(R.string.top_rated_completo);
     setJsonUrl(jsonUrl);
   }
 
