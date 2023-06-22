@@ -1,8 +1,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:orientation="horizontal"
   android:gravity="center">
+
+  <ImageButton
+    android:id="@+id/btncategory"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="80dp"
+    android:src="@drawable/ic_up" />
 
   <ImageButton
     android:id="@+id/btnPrevious"
@@ -20,6 +28,7 @@
     android:id="@+id/btnNext"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginRight="120dp"
     android:src="@drawable/ic_next" />
 
 </LinearLayout>

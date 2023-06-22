@@ -4,4 +4,13 @@
     <string name="page_number">%1$d / %2$d</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="now_playing_completo">https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&amp;page=1</string>
+    <string name="now_playing_sem_pagina">https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&amp;page=</string>
+
+    <string name="popular_completo">https://api.themoviedb.org/3/movie/popular?language=pt-BR&amp;page=1</string>
+    <string name="popular_sem_pagina">https://api.themoviedb.org/3/movie/popular?language=pt-BR&amp;page=</string>
+
+    <string name="top_rated_completo">https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&amp;page=1</string>
+    <string name="top_rated_sem_pagina">https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&amp;page=</string>
 </resources>

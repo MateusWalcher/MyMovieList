@@ -63,6 +63,8 @@ public class ModelTMDB {
         JSONObject jsonObject = new JSONObject(s);
         JSONArray jsonArray = jsonObject.getJSONArray("results");
 
+        movieList.clear();
+
         for (int i = 0; i < jsonArray.length(); i++) {
           JSONObject jsonObject1 = jsonArray.getJSONObject(i);
 
@@ -82,14 +84,38 @@ public class ModelTMDB {
     }
   }
 
+  public void clearMovieList() {
+    movieList.clear();
+    filmesAdaptery.notifyDataSetChanged();
+  }
+
   public void updateJsonUrl(int page) {
-    String jsonUrl = JSON_URL.replace("page=1", "page=" + page);
+    String jsonUrl = this.jsonUrl;
+
+    if (jsonUrl.contains("now_playing")) {
+      jsonUrl = "https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=" + page;
+    } else if (jsonUrl.contains("popular")) {
+      jsonUrl = "https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=" + page;
+    } else if (jsonUrl.contains("top_rated")) {
+      jsonUrl = "https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=" + page;
+    }
     setJsonUrl(jsonUrl);
   }
 
-  public void updateJsonUrlType() {
-    String jsonUrl = JSON_URL.replace("https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1", "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1");
+  public void setJsonUrlNowPlaying(){
+    String jsonUrl = "https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1";
     setJsonUrl(jsonUrl);
   }
+
+  public void setJsonUrlPopular(){
+    String jsonUrl = "https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1";
+    setJsonUrl(jsonUrl);
+  }
+  public void setJsonUrlTopRated(){
+    String jsonUrl = "https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1";
+    setJsonUrl(jsonUrl);
+  }
+
+
 
 }

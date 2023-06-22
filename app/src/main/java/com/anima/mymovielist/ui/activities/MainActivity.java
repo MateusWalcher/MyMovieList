@@ -5,11 +5,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -55,6 +57,50 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btnPrevious = paginationLayout.findViewById(R.id.btnPrevious);
     ImageButton btnNext = paginationLayout.findViewById(R.id.btnNext);
     TextView tvPageNumber = paginationLayout.findViewById(R.id.tvPageNumber);
+    ImageButton btnCategory = paginationLayout.findViewById(R.id.btncategory);
+
+    View optionsLayout = findViewById(R.id.layout_options);
+    Button btnCartaz = optionsLayout.findViewById(R.id.btnCartaz);
+    Button btnPopular = optionsLayout.findViewById(R.id.btnPopular);
+    Button btnVotado = optionsLayout.findViewById(R.id.btnVotado);
+
+
+    btnCategory.setOnClickListener(v -> {
+        if (optionsLayout.getVisibility() == View.VISIBLE){
+          optionsLayout.setVisibility(View.GONE);
+        }else{
+          optionsLayout.setVisibility(View.VISIBLE);
+        }
+      });
+
+    btnCartaz.setOnClickListener(v ->{
+      movieList.clear();
+      filmesAdaptery.notifyDataSetChanged();
+      currentPage = 1;
+      updatePageNumber(tvPageNumber, currentPage, totalPages);
+      modelTMDB.setJsonUrlNowPlaying();
+      modelTMDB.getData();
+    });
+
+    btnPopular.setOnClickListener(v -> {
+      movieList.clear();
+      filmesAdaptery.notifyDataSetChanged();
+      currentPage = 1;
+      updatePageNumber(tvPageNumber, currentPage, totalPages);
+      modelTMDB.setJsonUrlPopular();
+      modelTMDB.getData();
+    });
+
+    btnVotado.setOnClickListener(v -> {
+      movieList.clear();
+      filmesAdaptery.notifyDataSetChanged();
+      currentPage = 1;
+      updatePageNumber(tvPageNumber, currentPage, totalPages);
+      modelTMDB.setJsonUrlTopRated();
+      modelTMDB.getData();
+    });
+
+
 
     updatePageNumber(tvPageNumber, currentPage, totalPages);
 
@@ -79,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
     });
 
     modelTMDB.getData();
+
+
   }
 
   private void updatePageNumber(TextView tvPageNumber, int currentPage, int totalPages) {

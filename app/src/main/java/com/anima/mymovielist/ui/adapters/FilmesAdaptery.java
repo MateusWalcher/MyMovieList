@@ -100,12 +100,14 @@ public class FilmesAdaptery extends RecyclerView.Adapter<FilmesAdaptery.MyViewHo
   private void addFavoriteMovie(MovieModelClass movie) {
     firestore.addFavoriteMovie(movie);
     favoritesList.add(movie);
+    getFavoriteMovies();
     Toast.makeText(mContext, "Filme adicionado aos favoritos", Toast.LENGTH_SHORT).show();
   }
 
   private void removeFavoriteMovie(MovieModelClass movie) {
     firestore.removeFavoriteMovie(movie);
     favoritesList.remove(movie);
+    getFavoriteMovies();
     Toast.makeText(mContext, "Filme removido dos favoritos", Toast.LENGTH_SHORT).show();
   }
 
